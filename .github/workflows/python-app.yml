@@ -24,22 +24,46 @@ jobs:
       - name: Lint (ruff)
         run: ruff check .
 
-      - name: Day 1 — Guard Clause
-        working-directory: day01_guard_clause
+      - name: Guard Clause
+        working-directory: guard_clause
         run: pytest test_code.py -v
 
-      - name: Day 2 — List Comprehension
-        working-directory: day02_list_comprehension
+      - name: List Comprehension
+        working-directory: list_comprehension
         run: pytest test_code.py -v
 
-      - name: Day 3 — Explaining Variable
-        working-directory: day03_explaining_variable
+      - name: Explaining Variable
+        working-directory: explaining_variable
         run: pytest test_code.py -v
 
-      - name: Day 4 — Dataclass
-        working-directory: day04_dataclass
+      - name: Dataclass
+        working-directory: dataclass
         run: pytest test_code.py -v
 
-      - name: Day 5 — Generator
-        working-directory: day05_generator
+      - name: Generator
+        working-directory: generator
+        run: pytest test_code.py -v
+
+      - name: Magic Numbers
+        working-directory: magic_numbers
+        run: pytest test_code.py -v
+
+      - name: Magic Strings
+        working-directory: magic_strings
+        run: pytest test_code.py -v
+
+      - name: Bare and Broad Except
+        working-directory: exception_handling
+        run: pytest test_code.py -v
+
+      - name: Try/Except for Flow Control
+        working-directory: exception_flow_control
+        run: pytest test_code.py -v
+
+      - name: Consistent Returns
+        working-directory: consistent_returns
+        run: pytest test_code.py -v
+
+      - name: Exception Logging
+        working-directory: exception_logging
         run: pytest test_code.py -v

@@ -8,9 +8,15 @@ select = [
     "C90",  # mccabe complexity
     "I",    # isort
     "UP",   # pyupgrade (modernise syntax)
+    "PERF", # performance anti-patterns (list comprehensions, generators)
+    "PLR",  # pylint refactor rules (magic values, too many args, etc.)
+    "RET",  # return statement issues (else after return, inconsistent returns)
+    "LOG",  # logging issues (missing % args, use of root logger)
 ]
 ignore = [
-    "E501",  # line too long — messy_code.py intentionally has long lines
+    "E501",    # line too long — messy_code.py intentionally has long lines
+    "PLR2004", # magic value in comparison — too noisy for real code, covered by module
+    "PLR0913", # too many arguments — not relevant here
 ]
 
 [lint.mccabe]
