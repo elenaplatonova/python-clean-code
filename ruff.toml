@@ -1,0 +1,21 @@
+target-version = "py312"
+
+[lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes (unused imports, undefined names)
+    "C90",  # mccabe complexity
+    "I",    # isort
+    "UP",   # pyupgrade (modernise syntax)
+]
+ignore = [
+    "E501",  # line too long — messy_code.py intentionally has long lines
+]
+
+[lint.mccabe]
+max-complexity = 10
+
+[lint.per-file-ignores]
+# messy_code.py files are intentionally bad — only check the test files
+"messy_code.py" = ["ALL"]

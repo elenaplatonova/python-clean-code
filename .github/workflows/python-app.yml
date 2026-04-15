@@ -1,0 +1,45 @@
+name: Tests
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pytest ruff
+
+      - name: Lint (ruff)
+        run: ruff check .
+
+      - name: Day 1 — Guard Clause
+        working-directory: day01_guard_clause
+        run: pytest test_code.py -v
+
+      - name: Day 2 — List Comprehension
+        working-directory: day02_list_comprehension
+        run: pytest test_code.py -v
+
+      - name: Day 3 — Explaining Variable
+        working-directory: day03_explaining_variable
+        run: pytest test_code.py -v
+
+      - name: Day 4 — Dataclass
+        working-directory: day04_dataclass
+        run: pytest test_code.py -v
+
+      - name: Day 5 — Generator
+        working-directory: day05_generator
+        run: pytest test_code.py -v
