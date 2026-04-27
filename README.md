@@ -42,7 +42,34 @@ The constraint is what makes it a refactoring exercise. You are not adding featu
 | [Exception Logging](exception_logging/) | Every `except` block must log before returning | Exception logging |
 | [Extract Function](extract_function/) | Extract every inline calculation into a named helper function | Function decomposition |
 
-## Automated feedback
+## Recommended order
+
+The modules can be done in any order, but this sequence builds concepts progressively — easier wins first, more advanced patterns later.
+
+**Start here — readability basics:**
+
+1. [Guard Clause](guard_clause/) — most immediate visual payoff, everyone has nested ifs
+2. [Explaining Variable](explaining_variable/) — naming things, no new Python required
+3. [List Comprehension](list_comprehension/) — Pythonic idiom, satisfying to apply
+4. [Extract Function](extract_function/) — naming at the function level, builds on explaining_variable
+
+**Then — Python-specific patterns:**
+
+5. [Magic Numbers](magic_numbers/) — simple, mechanical change
+6. [Magic Strings](magic_strings/) — builds on magic numbers, introduces Enums
+7. [Dataclass](dataclass/) — structured data, requires understanding classes *(real-world PR optional)*
+8. [Generator](generator/) — memory and iteration, more advanced Python *(real-world PR optional)*
+
+**Save for last — exception handling cluster:**
+
+9. [Bare and Broad Except](exception_handling/) — start here for exceptions
+10. [Try/Except for Flow Control](exception_flow_control/) — exceptions vs conditionals *(real-world PR optional)*
+11. [Consistent Returns](consistent_returns/) — thinking in contracts
+12. [Exception Logging](exception_logging/) — ties the exception cluster together
+
+---
+
+## The 12 Modules
 
 Every push triggers the GitHub Actions workflow in [.github/workflows/python-app.yml](.github/workflows/python-app.yml). Each module's tests run as a separate step. If you broke the logic while cleaning up, you get a red X on that step. All green = you're done.
 
