@@ -109,6 +109,22 @@
       "comparison": "included",
       "timeout": 10,
       "points": 10
+    },
+    {
+      "name": "Extract Function",
+      "setup": "",
+      "run": "cd extract_function && pytest test_code.py -v",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
     }
+  ],
+  "protected_files": [
+    "*/test_code.py",
+    "ruff.toml",
+    ".github/workflows/python-app.yml",
+    ".github/classroom/autograding.json"
   ]
 }

@@ -55,7 +55,7 @@ Same logic. Same output. But the second version:
 
 ## What this course is
 
-Eleven modules. Each one gives you working but messy code and one specific constraint to apply. You refactor the code, run the tests, check the builds and if they're all green — you got it right.
+Twelve modules. Each one gives you working but messy code and one specific constraint to apply. You refactor the code, run the tests, check the builds and if they're all green — you got it right.
 
 The constraints are not arbitrary. Each one is a technique that professional developers use every day to make code easier to live with.
 
@@ -79,6 +79,7 @@ exception_handling/
 exception_flow_control/
 consistent_returns/
 exception_logging/
+extract_function/
 ```
 
 Each folder has a README with the constraint for the module. Read it, run the tests, refactor, run the tests again.

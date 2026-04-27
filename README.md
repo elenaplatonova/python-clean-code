@@ -1,4 +1,4 @@
-# Python Clean Code — 11-Module Refactoring Course
+# Python Clean Code — 12-Module Refactoring Course
 
 **New here? Read [WHY.md](WHY.md) first.**
 
@@ -25,7 +25,7 @@ pytest test_code.py   # must still be green — you pass when it is
 
 The constraint is what makes it a refactoring exercise. You are not adding features. You are changing the structure of code whose behaviour is already locked in by the tests.
 
-## The 11 Modules
+## The 12 Modules
 
 | Module | Constraint | Concept |
 |---|---|---|
@@ -40,6 +40,7 @@ The constraint is what makes it a refactoring exercise. You are not adding featu
 | [Try/Except for Flow Control](exception_flow_control/) | No `try/except` for dict lookups or routine checks — use `.get()` and `if` | Exceptions vs conditionals |
 | [Consistent Returns](consistent_returns/) | Every function returns one type — raise for bad input, return zero value for empty | Consistent return types |
 | [Exception Logging](exception_logging/) | Every `except` block must log before returning | Exception logging |
+| [Extract Function](extract_function/) | Extract every inline calculation into a named helper function | Function decomposition |
 
 ## Automated feedback
 

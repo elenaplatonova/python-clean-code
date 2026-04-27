@@ -67,3 +67,7 @@ jobs:
       - name: Exception Logging
         working-directory: exception_logging
         run: pytest test_code.py -v
+
+      - name: Extract Function
+        working-directory: extract_function
+        run: pytest test_code.py -v
