@@ -1,4 +1,4 @@
-# Module 5: The Generator / `yield`
+# Module 8: The Generator / `yield`
 
 ## Before you touch anything
 

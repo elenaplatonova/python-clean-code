@@ -1,4 +1,4 @@
-# Module 3: The Explaining Variable
+# Module 2: The Explaining Variable
 
 ## Before you touch anything
 

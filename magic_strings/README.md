@@ -1,4 +1,4 @@
-# Module 7: Magic Strings
+# Module 6: Magic Strings
 
 ## Before you touch anything
 

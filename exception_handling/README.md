@@ -1,4 +1,4 @@
-# Module 8: Bare and Broad Except
+# Module 9: Bare and Broad Except
 
 ## Before you touch anything
 

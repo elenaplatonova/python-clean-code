@@ -1,4 +1,4 @@
-# Module 9: Try/Except for Flow Control
+# Module 10: Try/Except for Flow Control
 
 ## Before you touch anything
 

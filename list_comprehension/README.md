@@ -1,4 +1,4 @@
-# Module 2: Death to the `for` Loop
+# Module 3: Death to the `for` Loop
 
 ## Before you touch anything
 

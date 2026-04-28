@@ -1,4 +1,4 @@
-# Module 6: Magic Numbers
+# Module 5: Magic Numbers
 
 ## Before you touch anything
 

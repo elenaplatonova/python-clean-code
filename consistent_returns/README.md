@@ -1,4 +1,4 @@
-# Module 10: Consistent Return Types
+# Module 11: Consistent Return Types
 
 ## Before you touch anything
 

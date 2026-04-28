@@ -1,4 +1,4 @@
-# Module 4: Native Types
+# Module 7: Native Types
 
 ## Before you touch anything
 

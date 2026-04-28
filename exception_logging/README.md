@@ -1,4 +1,4 @@
-# Module 11: Exception Logging
+# Module 12: Exception Logging
 
 ## Before you touch anything
 
