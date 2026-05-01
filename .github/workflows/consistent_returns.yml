@@ -1,0 +1,21 @@
+name: Consistent Returns
+
+on:
+  push:
+    paths:
+      - "11_consistent_returns/messy_code.py"
+  pull_request:
+    paths:
+      - "11_consistent_returns/messy_code.py"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest
+      - run: pytest test_code.py -v
+        working-directory: 11_consistent_returns

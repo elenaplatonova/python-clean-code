@@ -1,0 +1,21 @@
+name: Try/Except for Flow Control
+
+on:
+  push:
+    paths:
+      - "10_exception_flow_control/messy_code.py"
+  pull_request:
+    paths:
+      - "10_exception_flow_control/messy_code.py"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest
+      - run: pytest test_code.py -v
+        working-directory: 10_exception_flow_control
