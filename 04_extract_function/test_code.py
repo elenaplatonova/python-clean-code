@@ -10,6 +10,7 @@ def test_generate_report_returns_all_keys():
     assert set(result.keys()) == {"weighted_average", "top_scorers", "pass_rate", "grade"}
 
 
+
 def test_generate_report_weighted_average():
     result = messy_code.generate_report(SCORES, WEIGHTS, THRESHOLDS)
     assert result["weighted_average"] == 85.08

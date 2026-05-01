@@ -1,5 +1,9 @@
+import re
+
+
 def extract_report_data(log_line):
-    return {"date": log_line.split("T")[0], "time": log_line.split()[0].split("T")[1], "level": log_line.split()[1], "message": " ".join(log_line.split()[2:])}
+    parts = re.match(r"(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})\s+(\w+)\s+(.+)", log_line)
+    return {"date": parts.group(1), "time": parts.group(2), "level": parts.group(3), "message": parts.group(4).strip()}
 
 
 def summarize_scores(scores):

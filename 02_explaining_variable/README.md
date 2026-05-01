@@ -4,9 +4,10 @@
 
 Open [messy_code.py](messy_code.py) and read both functions. Then answer these:
 
-- What does `(len(scores) + 1) // 2` represent? What real-world concept does that expression describe?
-- If you needed to change how "top third" is calculated, could you find that logic quickly?
-- In `extract_report_data` — what does `group(3)` refer to? Could you tell without counting the brackets in the regex?
+- In `extract_report_data` — what does `group(3)` refer to? Can you tell without counting the brackets in the regex?
+- If someone added a new capture group in the middle of the pattern, what would break?
+- In `summarize_scores` — what does `(len(scores) + 1) // 2` represent? What real-world concept does it describe?
+- If either function had a bug, where would you even start looking?
 
 Run the tests:
 
@@ -22,7 +23,7 @@ All green. The logic is correct — you just can't read it.
 
 Both functions pack multiple operations onto single lines. The expressions are correct but unreadable — to understand what the code does, you have to mentally execute it step by step.
 
-A well-named variable eliminates that work. It tells you what a value *is*, so you don't have to figure it out.
+A well-named variable eliminates that work. It tells you what a value *is*, so the reader doesn't have to figure it out.
 
 ## Your Task
 
@@ -47,44 +48,33 @@ city, country = "London,UK".split(",")
 return city, country
 ```
 
+### `extract_report_data`
+
+The log line format is: `"2024-01-15T09:32:11 ERROR failed to connect"`
+
+Name the regex pattern, the match result, and each group before returning them. `group(1)`, `group(2)`, `group(3)`, `group(4)` should each become a named variable that describes what it contains:
+
+```python
+# Before — what does group(2) capture here?
+match = re.match(r"(\w+)\s+(\d+)\s+(.+)", record)
+return {"type": match.group(1), "id": match.group(2), "label": match.group(3)}
+
+# After — no ambiguity, no counting
+RECORD_PATTERN = r"(\w+)\s+(\d+)\s+(.+)"
+match = re.match(RECORD_PATTERN, record)
+record_type = match.group(1)
+record_id = match.group(2)
+label = match.group(3)
+return {"type": record_type, "id": record_id, "label": label}
+```
+
 ### `summarize_scores`
 
 Break the one-liner into named intermediate variables. The function returns two things — the average of the top third of scores, and the bottom half. Each of those concepts should have a name.
 
-### `extract_report_data`
-
-The regex works, but the log format is fixed and simple:
-
-```
-2024-01-15T09:32:11 ERROR failed to connect
-```
-
-Regex isn't always the wrong choice. It compiles to an efficient state machine — for parsing millions of log lines it can be faster than Python string operations. And a regex with 2–3 groups is manageable.
-
-The problem is scale. A regex with 15 groups like `group(7)` or `group(12)` is a bug waiting to happen — you can't tell what you're extracting without counting brackets, and adding a new group in the middle silently shifts all the numbers after it.
-
-The rule of thumb: if your regex has more groups than you can count on one hand, rewrite it. If the format is fixed and simple, `.split()` is almost always clearer regardless.
-
-For example, parsing a fixed-format string like `"2024-01-15 Alice 42"`:
-
-```python
-# With regex — works, but you have to read it carefully
-match = re.match(r"(\d{4}-\d{2}-\d{2})\s+(\w+)\s+(\d+)", line)
-date, name, age = match.group(1), match.group(2), match.group(3)
-
-# With split — same result, no pattern to decode
-parts = line.split()
-date = parts[0]
-name = parts[1]
-age = parts[2]
-```
-
-Rewrite `extract_report_data` the same way. Use `.split()` and name every intermediate value.
-
 ## Rules
 
 - Every intermediate value must have a name that describes what it *is*, not how it's computed.
-- `extract_report_data` must not use `import re` or any regex.
 - All 10 tests must still pass.
 
 ## Workflow
