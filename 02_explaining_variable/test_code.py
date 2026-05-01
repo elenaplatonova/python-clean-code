@@ -39,7 +39,7 @@ def test_extract_info_level():
 def test_summarize_scores_top_avg_divisible():
     # 9 scores: top third = first 3
     result = summarize_scores([90, 85, 80, 70, 60, 50, 40, 30, 20])
-    assert result["top_3_avg"] == 85.0
+    assert result["top_third_avg"] == 85.0
 
 
 def test_summarize_scores_bottom_half():
@@ -50,7 +50,7 @@ def test_summarize_scores_bottom_half():
 def test_summarize_scores_non_divisible():
     # 10 scores: top third rounded up = first 4
     result = summarize_scores([100, 90, 80, 70, 60, 50, 40, 30, 20, 10])
-    assert result["top_3_avg"] == 85.0
+    assert result["top_third_avg"] == 85.0
 
 
 def test_summarize_scores_bottom_half_non_divisible():
