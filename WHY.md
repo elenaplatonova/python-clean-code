@@ -68,18 +68,18 @@ You won't agree with all of them at first. That's fine. Do the exercise anyway a
 One module at a time. Each exercise takes 15–30 minutes.
 
 ```
-guard_clause/           ← start here
-list_comprehension/
-explaining_variable/
-dataclass/
-generator/
-magic_numbers/
-magic_strings/
-exception_handling/
-exception_flow_control/
-consistent_returns/
-exception_logging/
-extract_function/
+01_guard_clause/           ← start here
+02_explaining_variable/
+03_list_comprehension/
+04_extract_function/
+05_magic_numbers/
+06_magic_strings/
+07_dataclass/
+08_generator/
+09_exception_handling/
+10_exception_flow_control/
+11_consistent_returns/
+12_exception_logging/
 ```
 
 Each folder has a README with the constraint for the module. Read it, run the tests, refactor, run the tests again.

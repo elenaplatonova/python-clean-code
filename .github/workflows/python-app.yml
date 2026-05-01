@@ -1,4 +1,4 @@
-name: Tests
+name: Lint
 
 on:
   push:
@@ -7,67 +7,12 @@ on:
     branches: ["**"]
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - name: Install dependencies
-        run: pip install pytest ruff
-
-      - name: Lint (ruff)
-        run: ruff check .
-
-      - name: Guard Clause
-        working-directory: guard_clause
-        run: pytest test_code.py -v
-
-      - name: List Comprehension
-        working-directory: list_comprehension
-        run: pytest test_code.py -v
-
-      - name: Explaining Variable
-        working-directory: explaining_variable
-        run: pytest test_code.py -v
-
-      - name: Dataclass
-        working-directory: dataclass
-        run: pytest test_code.py -v
-
-      - name: Generator
-        working-directory: generator
-        run: pytest test_code.py -v
-
-      - name: Magic Numbers
-        working-directory: magic_numbers
-        run: pytest test_code.py -v
-
-      - name: Magic Strings
-        working-directory: magic_strings
-        run: pytest test_code.py -v
-
-      - name: Bare and Broad Except
-        working-directory: exception_handling
-        run: pytest test_code.py -v
-
-      - name: Try/Except for Flow Control
-        working-directory: exception_flow_control
-        run: pytest test_code.py -v
-
-      - name: Consistent Returns
-        working-directory: consistent_returns
-        run: pytest test_code.py -v
-
-      - name: Exception Logging
-        working-directory: exception_logging
-        run: pytest test_code.py -v
-
-      - name: Extract Function
-        working-directory: extract_function
-        run: pytest test_code.py -v
+      - run: pip install ruff
+      - run: ruff check .

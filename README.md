@@ -17,7 +17,7 @@ Every module has three files:
 **The workflow:**
 
 ```bash
-cd guard_clause
+cd 01_guard_clause
 pytest test_code.py   # should be green — verify before touching anything
 # read the README, apply the constraint
 pytest test_code.py   # must still be green — you pass when it is
@@ -25,53 +25,32 @@ pytest test_code.py   # must still be green — you pass when it is
 
 The constraint is what makes it a refactoring exercise. You are not adding features. You are changing the structure of code whose behaviour is already locked in by the tests.
 
-## The 12 Modules
-
-| Module | Constraint | Concept |
-|---|---|---|
-| [Guard Clause](guard_clause/) | Flatten 5 levels of nesting — no `else`, no line indented more than once | Guard clauses / early return |
-| [List Comprehension](list_comprehension/) | Replace every `for`+`append` loop with a single list comprehension | List comprehensions |
-| [Explaining Variable](explaining_variable/) | Break one-liner expressions into named intermediate variables | Explaining variables |
-| [Dataclass](dataclass/) | Replace a `dict`-based data model with a `dataclass` | Dataclasses |
-| [Generator](generator/) | Replace `readlines()` + list with `yield` — hold one line in memory at a time | Generators |
-| [Magic Numbers](magic_numbers/) | Extract every numeric literal into a named constant | Magic numbers |
-| [Magic Strings](magic_strings/) | Replace string literals with Enums for roles, statuses, and types | Magic strings / Enums |
-| [Bare and Broad Except](exception_handling/) | No bare `except`, no `except Exception` — catch only the specific exception | Specific exceptions |
-| [Try/Except for Flow Control](exception_flow_control/) | No `try/except` for dict lookups or routine checks — use `.get()` and `if` | Exceptions vs conditionals |
-| [Consistent Returns](consistent_returns/) | Every function returns one type — raise for bad input, return zero value for empty | Consistent return types |
-| [Exception Logging](exception_logging/) | Every `except` block must log before returning | Exception logging |
-| [Extract Function](extract_function/) | Extract every inline calculation into a named helper function | Function decomposition |
-
 ## Recommended order
 
 The modules can be done in any order, but this sequence builds concepts progressively — easier wins first, more advanced patterns later.
 
 **Start here — readability basics:**
 
-1. [Guard Clause](guard_clause/) — most immediate visual payoff, everyone has nested ifs
-2. [Explaining Variable](explaining_variable/) — naming things, no new Python required
-3. [List Comprehension](list_comprehension/) — Pythonic idiom, satisfying to apply
-4. [Extract Function](extract_function/) — naming at the function level, builds on explaining_variable
+1. [Guard Clause](01_guard_clause/) — most immediate visual payoff, everyone has nested ifs
+2. [Explaining Variable](02_explaining_variable/) — naming things, no new Python required
+3. [List Comprehension](03_list_comprehension/) — Pythonic idiom, satisfying to apply
+4. [Extract Function](04_extract_function/) — naming at the function level, builds on explaining_variable
 
 **Then — Python-specific patterns:**
 
-5. [Magic Numbers](magic_numbers/) — simple, mechanical change
-6. [Magic Strings](magic_strings/) — builds on magic numbers, introduces Enums
-7. [Dataclass](dataclass/) — structured data, requires understanding classes *(real-world PR optional)*
-8. [Generator](generator/) — memory and iteration, more advanced Python *(real-world PR optional)*
+5. [Magic Numbers](05_magic_numbers/) — simple, mechanical change
+6. [Magic Strings](06_magic_strings/) — builds on magic numbers, introduces Enums
+7. [Dataclass](07_dataclass/) — structured data, requires understanding classes *(real-world PR optional)*
+8. [Generator](08_generator/) — memory and iteration, more advanced Python *(real-world PR optional)*
 
 **Save for last — exception handling cluster:**
 
-9. [Bare and Broad Except](exception_handling/) — start here for exceptions
-10. [Try/Except for Flow Control](exception_flow_control/) — exceptions vs conditionals *(real-world PR optional)*
-11. [Consistent Returns](consistent_returns/) — thinking in contracts
-12. [Exception Logging](exception_logging/) — ties the exception cluster together
+9. [Bare and Broad Except](09_exception_handling/) — start here for exceptions
+10. [Try/Except for Flow Control](10_exception_flow_control/) — exceptions vs conditionals *(real-world PR optional)*
+11. [Consistent Returns](11_consistent_returns/) — thinking in contracts
+12. [Exception Logging](12_exception_logging/) — ties the exception cluster together
 
 ---
-
-## The 12 Modules
-
-Every push triggers the GitHub Actions workflow in [.github/workflows/python-app.yml](.github/workflows/python-app.yml). Each module's tests run as a separate step. If you broke the logic while cleaning up, you get a red X on that step. All green = you're done.
 
 ## Prerequisites
 

@@ -3,17 +3,7 @@
     {
       "name": "Guard Clause",
       "setup": "pip install pytest ruff",
-      "run": "cd guard_clause && pytest test_code.py -v",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 10
-    },
-    {
-      "name": "List Comprehension",
-      "setup": "",
-      "run": "cd list_comprehension && pytest test_code.py -v",
+      "run": "cd 01_guard_clause && pytest test_code.py -v",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -23,7 +13,7 @@
     {
       "name": "Explaining Variable",
       "setup": "",
-      "run": "cd explaining_variable && pytest test_code.py -v",
+      "run": "cd 02_explaining_variable && pytest test_code.py -v",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -31,79 +21,9 @@
       "points": 10
     },
     {
-      "name": "Dataclass",
+      "name": "List Comprehension",
       "setup": "",
-      "run": "cd dataclass && pytest test_code.py -v",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 10
-    },
-    {
-      "name": "Generator",
-      "setup": "",
-      "run": "cd generator && pytest test_code.py -v",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 10
-    },
-    {
-      "name": "Magic Numbers",
-      "setup": "",
-      "run": "cd magic_numbers && pytest test_code.py -v",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 10
-    },
-    {
-      "name": "Magic Strings",
-      "setup": "",
-      "run": "cd magic_strings && pytest test_code.py -v",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 10
-    },
-    {
-      "name": "Bare and Broad Except",
-      "setup": "",
-      "run": "cd exception_handling && pytest test_code.py -v",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 10
-    },
-    {
-      "name": "Try/Except for Flow Control",
-      "setup": "",
-      "run": "cd exception_flow_control && pytest test_code.py -v",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 10
-    },
-    {
-      "name": "Consistent Returns",
-      "setup": "",
-      "run": "cd consistent_returns && pytest test_code.py -v",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 10
-    },
-    {
-      "name": "Exception Logging",
-      "setup": "",
-      "run": "cd exception_logging && pytest test_code.py -v",
+      "run": "cd 03_list_comprehension && pytest test_code.py -v",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -113,7 +33,87 @@
     {
       "name": "Extract Function",
       "setup": "",
-      "run": "cd extract_function && pytest test_code.py -v",
+      "run": "cd 04_extract_function && pytest test_code.py -v",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Magic Numbers",
+      "setup": "",
+      "run": "cd 05_magic_numbers && pytest test_code.py -v",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Magic Strings",
+      "setup": "",
+      "run": "cd 06_magic_strings && pytest test_code.py -v",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Dataclass",
+      "setup": "",
+      "run": "cd 07_dataclass && pytest test_code.py -v",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Generator",
+      "setup": "",
+      "run": "cd 08_generator && pytest test_code.py -v",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Bare and Broad Except",
+      "setup": "",
+      "run": "cd 09_exception_handling && pytest test_code.py -v",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Try/Except for Flow Control",
+      "setup": "",
+      "run": "cd 10_exception_flow_control && pytest test_code.py -v",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Consistent Returns",
+      "setup": "",
+      "run": "cd 11_consistent_returns && pytest test_code.py -v",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Exception Logging",
+      "setup": "",
+      "run": "cd 12_exception_logging && pytest test_code.py -v",
       "input": "",
       "output": "",
       "comparison": "included",
