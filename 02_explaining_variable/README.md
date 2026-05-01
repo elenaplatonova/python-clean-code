@@ -4,8 +4,8 @@
 
 Open [messy_code.py](messy_code.py) and read both functions. Then answer these:
 
-- In `extract_report_data` — what does `group(3)` refer to? Can you tell without counting the brackets in the regex?
-- If someone added a new capture group in the middle of the pattern, what would break?
+- In `get_user_msg_from_error_log` — what does `group(3)` refer to in the f-string? Can you tell without counting the brackets in the regex?
+- If someone added a new capture group in the middle of the pattern, would the output change silently or loudly?
 - In `summarize_scores` — what does `(len(scores) + 1) // 2` represent? What real-world concept does it describe?
 - If either function had a bug, where would you even start looking?
 
@@ -48,16 +48,16 @@ city, country = "London,UK".split(",")
 return city, country
 ```
 
-### `extract_report_data`
+### `get_user_msg_from_error_log`
 
 The log line format is: `"2024-01-15T09:32:11 ERROR failed to connect"`
 
-Name the regex pattern, the match result, and each group before returning them. `group(1)`, `group(2)`, `group(3)`, `group(4)` should each become a named variable that describes what it contains:
+The function returns a user-facing message string. Name the regex pattern, the match result, and each group before using them. `group(1)`, `group(2)`, `group(3)`, `group(4)` inside an f-string are completely opaque — give each one a name that describes what it contains:
 
 ```python
-# Before — what does group(2) capture here?
+# Before — what does group(2) mean in this f-string?
 match = re.match(r"(\w+)\s+(\d+)\s+(.+)", record)
-return {"type": match.group(1), "id": match.group(2), "label": match.group(3)}
+return f"Event {match.group(2)} of type {match.group(1)}: {match.group(3)}"
 
 # After — no ambiguity, no counting
 RECORD_PATTERN = r"(\w+)\s+(\d+)\s+(.+)"
@@ -65,7 +65,7 @@ match = re.match(RECORD_PATTERN, record)
 record_type = match.group(1)
 record_id = match.group(2)
 label = match.group(3)
-return {"type": record_type, "id": record_id, "label": label}
+return f"Event {record_id} of type {record_type}: {label}"
 ```
 
 ### `summarize_scores`
@@ -75,7 +75,7 @@ Break the one-liner into named intermediate variables. The function returns two 
 ## Rules
 
 - Every intermediate value must have a name that describes what it *is*, not how it's computed.
-- All 10 tests must still pass.
+- All 11 tests must still pass.
 
 ## Workflow
 

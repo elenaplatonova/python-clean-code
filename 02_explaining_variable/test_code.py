@@ -1,34 +1,39 @@
-from messy_code import extract_report_data, summarize_scores
+from messy_code import get_user_msg_from_error_log, summarize_scores
+
+
+def test_extract_full_output():
+    result = get_user_msg_from_error_log("2024-01-15T09:32:11 ERROR failed to connect")
+    assert result == "Hi, we have 1 error(s) at 2024-01-15 09:32:11: failed to connect"
 
 
 def test_extract_date():
-    result = extract_report_data("2024-01-15T09:32:11 ERROR failed to connect")
-    assert result["date"] == "2024-01-15"
+    result = get_user_msg_from_error_log("2024-01-15T09:32:11 ERROR failed to connect")
+    assert "2024-01-15" in result
 
 
 def test_extract_time():
-    result = extract_report_data("2024-01-15T09:32:11 ERROR failed to connect")
-    assert result["time"] == "09:32:11"
+    result = get_user_msg_from_error_log("2024-01-15T09:32:11 ERROR failed to connect")
+    assert "09:32:11" in result
 
 
-def test_extract_level():
-    result = extract_report_data("2024-01-15T09:32:11 ERROR failed to connect")
-    assert result["level"] == "ERROR"
+def test_extract_level_lowercased():
+    result = get_user_msg_from_error_log("2024-01-15T09:32:11 ERROR failed to connect")
+    assert "error" in result
 
 
 def test_extract_message():
-    result = extract_report_data("2024-01-15T09:32:11 ERROR failed to connect")
-    assert result["message"] == "failed to connect"
+    result = get_user_msg_from_error_log("2024-01-15T09:32:11 ERROR failed to connect")
+    assert "failed to connect" in result
 
 
 def test_extract_message_strips_whitespace():
-    result = extract_report_data("2024-01-15T09:32:11 INFO   user logged in  ")
-    assert result["message"] == "user logged in"
+    result = get_user_msg_from_error_log("2024-01-15T09:32:11 INFO   user logged in  ")
+    assert result.endswith("user logged in")
 
 
 def test_extract_info_level():
-    result = extract_report_data("2024-03-22T14:00:00 INFO server started")
-    assert result["level"] == "INFO"
+    result = get_user_msg_from_error_log("2024-03-22T14:00:00 INFO server started")
+    assert "info" in result
 
 
 def test_summarize_scores_top_avg_divisible():

@@ -1,9 +1,9 @@
 import re
 
 
-def extract_report_data(log_line):
+def get_user_msg_from_error_log(log_line):
     parts = re.match(r"(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})\s+(\w+)\s+(.+)", log_line)
-    return {"date": parts.group(1), "time": parts.group(2), "level": parts.group(3), "message": parts.group(4).strip()}
+    return f"Hi, we have 1 {parts.group(3).lower()}(s) at {parts.group(1)} {parts.group(2)}: {parts.group(4).strip()}"
 
 
 def summarize_scores(scores):
