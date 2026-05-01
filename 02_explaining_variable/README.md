@@ -53,13 +53,29 @@ Break the one-liner into named intermediate variables. The function returns two 
 
 ### `extract_report_data`
 
-The regex works, but regex is almost never readable. The log format is fixed and simple:
+The regex works, but the log format is fixed and simple:
 
 ```
 2024-01-15T09:32:11 ERROR failed to connect
 ```
 
-Rewrite this function without regex. Use `.split()` — and give every intermediate value a name that describes what it represents.
+When a format is always the same — same delimiter, same positions — `.split()` is clearer than regex. Regex earns its complexity when the input is variable: validating an email address, finding all phone numbers in free text, matching URLs in any format. For a log line where the structure never changes, it's overkill.
+
+For example, parsing a fixed-format string like `"2024-01-15 Alice 42"`:
+
+```python
+# With regex — works, but you have to read it carefully
+match = re.match(r"(\d{4}-\d{2}-\d{2})\s+(\w+)\s+(\d+)", line)
+date, name, age = match.group(1), match.group(2), match.group(3)
+
+# With split — same result, no pattern to decode
+parts = line.split()
+date = parts[0]
+name = parts[1]
+age = parts[2]
+```
+
+Rewrite `extract_report_data` the same way. Use `.split()` and name every intermediate value.
 
 ## Rules
 
