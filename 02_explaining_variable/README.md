@@ -59,7 +59,11 @@ The regex works, but the log format is fixed and simple:
 2024-01-15T09:32:11 ERROR failed to connect
 ```
 
-When a format is always the same — same delimiter, same positions — `.split()` is clearer than regex. Regex earns its complexity when the input is variable: validating an email address, finding all phone numbers in free text, matching URLs in any format. For a log line where the structure never changes, it's overkill.
+Regex isn't always the wrong choice. It compiles to an efficient state machine — for parsing millions of log lines it can be faster than Python string operations. And a regex with 2–3 groups is manageable.
+
+The problem is scale. A regex with 15 groups like `group(7)` or `group(12)` is a bug waiting to happen — you can't tell what you're extracting without counting brackets, and adding a new group in the middle silently shifts all the numbers after it.
+
+The rule of thumb: if your regex has more groups than you can count on one hand, rewrite it. If the format is fixed and simple, `.split()` is almost always clearer regardless.
 
 For example, parsing a fixed-format string like `"2024-01-15 Alice 42"`:
 
