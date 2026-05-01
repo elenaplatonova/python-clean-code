@@ -4,9 +4,9 @@
 
 Open [messy_code.py](messy_code.py) and read both functions. Then answer these:
 
-- In `summarize_scores` — what does `(len(scores) + 1) // 2` mean? What does it represent in the real world?
-- In `extract_report_data` — if the regex pattern had a bug, how would you know which group captures which field?
-- If a colleague asked you "what's the bottom half cutoff?" could you point to a line that answers that question?
+- What does `(len(scores) + 1) // 2` represent? What real-world concept does that expression describe?
+- If you needed to change how "top third" is calculated, could you find that logic quickly?
+- In `extract_report_data` — what does `group(3)` refer to? Could you tell without counting the brackets in the regex?
 
 Run the tests:
 
@@ -20,31 +20,51 @@ All green. The logic is correct — you just can't read it.
 
 ## The Problem
 
-Both functions pack multiple operations onto single lines. The expressions are correct but they force the reader to mentally execute the code rather than just read it. You have to decode what it does instead of understanding what it means.
+Both functions pack multiple operations onto single lines. The expressions are correct but unreadable — to understand what the code does, you have to mentally execute it step by step.
 
-Comments could help, but they go out of date. A well-named variable never lies — it *is* the documentation.
+A well-named variable eliminates that work. It tells you what a value *is*, so you don't have to figure it out.
 
 ## Your Task
 
-Break each dense expression into **named intermediate variables** whose names describe what the value represents.
+The idea is simple — pull each calculated value out of the expression and give it a name:
 
 ```python
-# Before — what does this mean?
-return data[len(data) // 2 :]
+# Before — what does this slice mean?
+return data[len(data) // 4:]
 
 # After — obvious at a glance
-midpoint = len(data) // 2
-return data[midpoint:]
+quarter_point = len(data) // 4
+return data[quarter_point:]
 ```
 
-For `extract_report_data`: name the regex pattern and the match result before calling `.group()`.
+```python
+# Before — what is parts[1] here?
+parts = "London,UK".split(",")
+return parts[0], parts[1]
 
-For `summarize_scores`: pull the slice index and the list slice into named variables before computing the average.
+# After — no ambiguity
+city, country = "London,UK".split(",")
+return city, country
+```
+
+### `summarize_scores`
+
+Break the one-liner into named intermediate variables. The function returns two things — the average of the top third of scores, and the bottom half. Each of those concepts should have a name.
+
+### `extract_report_data`
+
+The regex works, but regex is almost never readable. The log format is fixed and simple:
+
+```
+2024-01-15T09:32:11 ERROR failed to connect
+```
+
+Rewrite this function without regex. Use `.split()` — and give every intermediate value a name that describes what it represents.
 
 ## Rules
 
-- No line may contain more than **one significant operation** (no chaining transforms on a single line).
-- Every intermediate value must have a name that describes *what it is*, not how it's computed (e.g., `top_third` not `slice_end`).
+- Every intermediate value must have a name that describes what it *is*, not how it's computed.
+- `extract_report_data` must not use `import re` or any regex.
 - All 10 tests must still pass.
 
 ## Workflow
@@ -59,13 +79,9 @@ pytest test_code.py   # green after
 
 ## What you just learned
 
-An explaining variable gives a name to an intermediate result that would otherwise exist only inside a larger expression. The name is the documentation.
+An explaining variable gives a name to an intermediate result that would otherwise be buried inside a larger expression. The name is the documentation.
 
-The practical benefit: code is read far more often than it is written. Every time someone (including you) reads a dense one-liner, they pay a comprehension tax — they have to mentally execute it to understand it. A named variable eliminates that tax permanently.
-
-There's a common fear that more variables means slower code. In Python, for the kind of operations you're doing here, the difference is immeasurable. Clarity is almost always worth it.
-
----
+Code is read far more often than it is written. Every time someone reads a dense one-liner, they pay a comprehension tax — they have to mentally execute it to understand it. A named variable eliminates that tax permanently.
 
 ---
 
